@@ -290,7 +290,7 @@ sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
 echo '# Openvpn Configuration by Firenet Philippines :)
 dev tun
-port 53
+port 55
 proto udp
 topology subnet
 server 10.30.0.0 255.255.252.0
