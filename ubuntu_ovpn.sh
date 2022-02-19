@@ -603,7 +603,7 @@ connect = 1194
 accept = 443 
 
 [openvpn-udp]
-connect = 53
+connect = 55
 accept = 444
 " >> stunnel.conf
 
