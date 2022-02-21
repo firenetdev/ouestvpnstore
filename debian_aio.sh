@@ -8,6 +8,7 @@
 
 active_api="http://ouestvpn.store/api/authentication/active.php?key=FIRENET541"
 inactive_api="http://ouestvpn.store/api/authentication/inactive.php?key=FIRENET541"
+deleted_api="http://ouestvpn.store/api/authentication/deleted.php?key=FIRENET541"
 
 clear
 cd ~
@@ -273,12 +274,14 @@ echo -e "[\e[32mInfo\e[0m] Configuring Authentication"
 
 curl -4skL "${active_api}" -o /etc/active.sh
 curl -4skL "${inactive_api}" -o /etc/inactive.sh
+curl -4skL "${deleted_api}" -o /etc/deleted.sh
 
 chmod +x /etc/active.sh
 chmod +x /etc/inactive.sh
 
 echo -e "*/5 *\t* * *\troot\tbash /etc/active.sh" >> /etc/cron.d/authentication
 echo -e "*/5 *\t* * *\troot\tbash /etc/inactive.sh" >> /etc/cron.d/authentication
+echo -e "*/5 *\t* * *\troot\tbash /etc/deleted.sh" >> /etc/cron.d/authentication
 }
 
 function install_sudo(){
