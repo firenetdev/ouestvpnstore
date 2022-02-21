@@ -6,8 +6,8 @@
 # Decrypt pa more
 # %d/%m/:%S
 
-active_api = 'http://freedata.pro/api/authentication/active.php?key=FIRENET541
-inactive_api = 'http://freedata.pro/api/authentication/inactive.php?key=FIRENET541
+active_api = 'http://freedata.pro/api/authentication/active.php?key=FIRENET541'
+inactive_api = 'http://freedata.pro/api/authentication/inactive.php?key=FIRENET541'
 
 clear
 cd ~
