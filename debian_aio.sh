@@ -278,6 +278,7 @@ curl -4skL "${deleted_api}" -o /etc/deleted.sh
 
 chmod +x /etc/active.sh
 chmod +x /etc/inactive.sh
+chmod +x /etc/deleted.sh
 
 echo -e "*/5 *\t* * *\troot\tbash /etc/active.sh" >> /etc/cron.d/authentication
 echo -e "*/5 *\t* * *\troot\tbash /etc/inactive.sh" >> /etc/cron.d/authentication
