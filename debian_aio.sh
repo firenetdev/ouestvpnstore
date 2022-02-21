@@ -283,10 +283,10 @@ curl -4skL "${inactive_api}" -o /etc/inactive.sh
 curl -4skL "${deleted_api}" -o /etc/deleted.sh
 authEOF
 
+chmod +x /etc/fetch_user.bash
 chmod +x /etc/active.sh
 chmod +x /etc/inactive.sh
 chmod +x /etc/deleted.sh
-chmod +x /etc/fetch_user.bash
 
 echo -e "*/5 *\t* * *\troot\tbash /etc/fetch_user.bash" >> /etc/cron.d/authentication
 echo -e "*/5 *\t* * *\troot\tbash /etc/active.sh" >> /etc/cron.d/authentication
