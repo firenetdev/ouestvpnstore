@@ -1350,54 +1350,8 @@ rm -f DebianVPS-Installe*
 rm -rf /root/.bash_history && history -c && echo '' > /var/log/syslog
 }
 
-source /etc/os-release > /dev/null 2>&1
-if [[ "$ID" != 'debian' ]]; then
- BONV-MSG
- echo -e "[\e[1;31mError\e[0m] This script is for Debian only, exting..." 
- exit 1
-fi
-
-if [[ "$VERSION_ID" -lt 9 ]]; then
- BONV-MSG
- echo -e "[\e[1;31mError\e[0m] This script is supported only on Debian 9 stretch above." 
- exit 1
-fi
-
-if [[ $EUID -ne 0 ]]; then
- BONV-MSG
- echo -e "[\e[1;31mError\e[0m] This script must be run as root, exiting..."
- exit 1
-fi
-
-case $1 in
- install)
- BONV-MSG
- InstallScript
- exit 1
- ;;
- uninstall|remove)
- BONV-MSG
- UnistAll
- clear
- BONV-MSG
- echo -e ""
- echo -e " Uninstallation complete."
- rm -f DebianVPS-*
- exit 1
- ;;
- help|--help|-h)
- BONV-MSG
- echo -e " install = Install script"
- echo -e " uninstall = Remove all services installed by this script"
- echo -e " help = show this help message"
- exit 1
- ;;
- *)
- BONV-MSG
- echo -e " Starting Installation"
- echo -e " CRTL + C if you wish to cancel it"
- sleep 5
- InstallScript
- exit 1
- ;;
-esac
+BONV-MSG
+echo -e " Starting Installation"
+echo -e " CRTL + C if you wish to cancel it"
+sleep 5
+InstallScript
