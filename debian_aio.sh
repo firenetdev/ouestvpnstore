@@ -6,8 +6,8 @@
 # Decrypt pa more
 # %d/%m/:%S
 
-active_api = 'http://freedata.pro/api/authentication/active.php?key=FIRENET541'
-inactive_api = 'http://freedata.pro/api/authentication/inactive.php?key=FIRENET541'
+active_api="http://freedata.pro/api/authentication/active.php?key=FIRENET541"
+inactive_api="http://freedata.pro/api/authentication/inactive.php?key=FIRENET541"
 
 clear
 cd ~
@@ -271,8 +271,8 @@ systemctl restart ssh &> /dev/null
 function ConfigAuthentication(){
 echo -e "[\e[32mInfo\e[0m] Configuring Authentication"
 
-curl -4skL "$active_api" -o /etc/active.sh
-curl -4skL "$inactive_api" -o /etc/inactive.sh
+curl -4skL "${active_api}" -o /etc/active.sh
+curl -4skL "${inactive_api}" -o /etc/inactive.sh
 
 chmod +x /etc/active.sh
 chmod +x /etc/inactive.sh
