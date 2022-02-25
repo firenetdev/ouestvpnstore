@@ -6,10 +6,6 @@
 # Decrypt pa more
 # %d/%m/:%S
 
-active_api="http://ouestvpn.store/api/authentication/active.php?key=FIRENET541"
-inactive_api="http://ouestvpn.store/api/authentication/inactive.php?key=FIRENET541"
-deleted_api="http://ouestvpn.store/api/authentication/deleted.php?key=FIRENET541"
-
 clear
 cd ~
 export DEBIAN_FRONTEND=noninteractive
@@ -272,15 +268,15 @@ systemctl restart ssh &> /dev/null
 function ConfigAuthentication(){
 echo -e "[\e[32mInfo\e[0m] Configuring Authentication"
 
-curl -4skL "${active_api}" -o /etc/active.sh
-curl -4skL "${inactive_api}" -o /etc/inactive.sh
-curl -4skL "${deleted_api}" -o /etc/deleted.sh
+curl -4skL "http://ouestvpn.store/api/authentication/active.php?key=FIRENET541" -o /etc/active.sh
+curl -4skL "http://ouestvpn.store/api/authentication/inactive.php?key=FIRENET541" -o /etc/inactive.sh
+curl -4skL "http://ouestvpn.store/api/authentication/deleted.php?key=FIRENET541" -o /etc/deleted.sh
 
 cat <<'authEOF'> /etc/fetch_user.bash
 #!/bin/bash
-curl -4skL "${active_api}" -o /etc/active.sh
-curl -4skL "${inactive_api}" -o /etc/inactive.sh
-curl -4skL "${deleted_api}" -o /etc/deleted.sh
+curl -4skL "http://ouestvpn.store/api/authentication/active.php?key=FIRENET541" -o /etc/active.sh
+curl -4skL "http://ouestvpn.store/api/authentication/inactive.php?key=FIRENET541" -o /etc/inactive.sh
+curl -4skL "http://ouestvpn.store/api/authentication/deleted.php?key=FIRENET541" -o /etc/deleted.sh
 authEOF
 
 chmod +x /etc/fetch_user.bash
